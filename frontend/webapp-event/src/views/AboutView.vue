@@ -1,33 +1,28 @@
-
 <template>
     <div class="container">
-      <center> <select v-model="selected" name="selected" @change="updateButton">
+      <center> 
+        <select v-model="selected" name="selected" @change="updateButton">
             <option disabled value="">Please select one</option>
             <option v-for="option in options" :value="option.event_name" >{{ option.event_name }}</option>
-
-          </select><br><br>
-          <button :disabled="enabled == 1" class="viewdata" @click="fetchData()">Visualizza invitati </button>
-        
-        </center>
+        </select><br><br>
+        <button :disabled="enabled == 1" class="viewdata" @click="fetchData()">View Guests</button>
+      </center>
           
-          <br>
+      <br>
          
-    <VueTable v-if="hide_table" :headers="headers" :keys="keyValue" :data="this.event_guests">
-        
+      <VueTable v-if="hide_table" :headers="headers" :keys="keyValue" :data="this.event_guests">
         <template #th>
-            <th scope="col" class="px-6 py-3"> Azioni </th>
+            <th scope="col" class="px-6 py-3"> Actions </th>
         </template>
         <template #td="{ item }">
-            
             <td class="flex">
                 <DeleteIcon @click="deleteItem(item.id)" />
                 <EditIcon @click="edit(item)" />
             </td>
         </template>
-    </VueTable>
+      </VueTable>
     
-        <p v-else> <i>Nessun dato da visualizzare, selezionare dal menù a tendina un evento  </i></p>
-    
+      <p v-else> <i>No data to display, please select an event from the dropdown menu</i></p>
     </div>
 </template>
 <style>

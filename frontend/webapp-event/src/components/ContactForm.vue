@@ -1,49 +1,45 @@
 <template>
     <div class="container">
         <form @submit.prevent="addGuest">
-          <label>Nome invitato:</label>
+          <label>Guest Name:</label>
           <input 
             type="text" 
             v-model="name"
             name="name"
           >
-          <label>Nome Evento:</label>
-          
-           
+          <label>Event Name:</label>
           <select v-model="selected" name="selected">
             <option disabled value="">Please select one</option>
             <option v-for="option in options" :value="option.event_name" >{{ option.event_name }}</option>
-
           </select>
          
-      <br><br>
+          <br><br>
           <label>Email:</label>
           <input 
             type="email" 
             v-model="email"
             name="email"
            >
-           <label>Numero telefonico:</label>
+           <label>Phone Number:</label>
           <input 
             type="text" 
             v-model="phone"
             name="phone"
           >
-          <label>Metodo di pagamento:</label>
+          <label>Payment Method:</label>
           <input 
             type="text" 
             v-model="payment"
             name="payment"
           >
-          <label>Ammontare €:</label>
+          <label>Amount (€):</label>
           <input 
             type="text" 
             v-model="euro"
             name="euro"
           >
           
-          
-          <input type="submit" value="Aggiungi">
+          <input type="submit" value="Add">
         </form>
     </div>
 </template>
